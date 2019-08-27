@@ -49,13 +49,15 @@ eureka   3/3     20s
 NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)           AGE
 eureka       ClusterIP   None            <none>        28888/TCP         44m
 gateway      NodePort    10.106.21.126   <none>        28899:31000/TCP   44m
+```
 
 ### 访问网关测试页面
-
 ```shell
 # 获取minikube的IP：
 vmip=$(minikube ip)
+
 # 获取网关服务的端口
 gwport=$(kubectl get svc -l app=gateway-default -o yaml |grep nodePort | awk '{print $2}' )
 ```
+
 浏览器访问 http://$(vmip):$(gwport)/user/{your-test-data}
