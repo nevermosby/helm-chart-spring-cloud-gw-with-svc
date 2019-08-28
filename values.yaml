@@ -12,8 +12,6 @@ data:
         tag: "1.0"
       resource:
         replicas: 1
-        # serviceName: eureka
-        # servicePort: 28888
         limits:
           cpu: 500m
           memory: 500Mi

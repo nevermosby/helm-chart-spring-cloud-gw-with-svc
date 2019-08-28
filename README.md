@@ -6,31 +6,46 @@
 
 ![gw-demo](./images/gw-demo.PNG)
 
-特别声明：由于spring cloud微服务架构依赖注册中心，因此本chart依赖[spring-cloud-eureka](https://) 源，已在Chart.yaml文件中声明：
+特别声明
+- 由于spring cloud微服务架构依赖注册中心，因此本chart依赖[spring-cloud-eureka](https://) 源，已在Chart.yaml文件中声明：
 ```yaml
 dependencies:
   - name: spring-cloud-eureka
     version: 0.1.0
     repository: https://apphub.aliyuncs.com/
 ```
+- 添加apphub到本地helm repo
+
+```shell
+helm repo add apphub https://apphub.aliyuncs.com/
+```
 
 ## 安装使用
 
 ### 本地安装
 ```shell
-helm install gw-svc spring-cloud-gw-with-svc/
+> helm dependency list
+NAME                    VERSION REPOSITORY                      STATUS
+spring-cloud-eureka     0.1.0   https://apphub.aliyuncs.com/    missing
 
-```
+> helm dependency build
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "apphub" chart repository
+Update Complete. ⎈Happy Helming!⎈
+Saving 1 charts
+Downloading spring-cloud-eureka from repo https://apphub.aliyuncs.com/
+Deleting outdated charts
 
-成功安装后可以看到如下输出：
-```shell
+> helm install gw-svc spring-cloud-gw-with-svc/
+
+# 成功安装后可以看到如下输出：
 NAME: gw-svc
 LAST DEPLOYED: 2019-08-26 17:11:31.5412552 +0800 CST
 NAMESPACE: default
 STATUS: deployed
 ```
 
-### 查看部署好的workload：
+### 查看部署好的workload
 ```shell
 # 查看所有pod
 > kubectl get pod

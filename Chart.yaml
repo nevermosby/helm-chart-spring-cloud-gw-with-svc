@@ -21,6 +21,3 @@ dependencies:
   - name: spring-cloud-eureka
     version: 0.1.0
     repository: https://apphub.aliyuncs.com/
-  # - name: helm-chart-spring-cloud-eureka
-  #   version: 0.1.0
-  #   repository: file:///helm-chart-spring-cloud-eureka
