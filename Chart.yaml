@@ -5,6 +5,7 @@ type: application
 version: 0.1.0
 appVersion: 0.1.0
 icon: https://davidlovezoe.files.wordpress.com/2019/08/spring-cloud.jpg
+home: https://github.com/nevermosby/helm-chart-spring-cloud-gw-with-svc
 keywords:
   - spring cloud
   - gateway
@@ -13,11 +14,11 @@ keywords:
 sources:
   - https://github.com/nevermosby/springcloudoss-gateway
   - https://github.com/nevermosby/springcloudoss-user-service
-maintainers:
-  - name: David li
-    email: legendarilylwq@gmail.com
-
 dependencies:
   - name: spring-cloud-eureka
     version: 0.1.0
     repository: https://apphub.aliyuncs.com/
+maintainers:
+  - name: David li(@nevermosby)
+    email: legendarilylwq@gmail.com
+

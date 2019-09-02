@@ -4,26 +4,29 @@
 
 通过`spring-cloud-gw-with-svc`可以快速创建[spring cloud oss](https://spring.io/projects/spring-cloud-netflix)套件里的网关服务，并部署了一个示例应用[user-service](https://github.com/nevermosby/springcloudoss-user-service)，验证网关服务的作用，效果如下图所示：
 
-![gw-demo](./images/gw-demo.PNG)
+![gw-demo](https://raw.githubusercontent.com/nevermosby/helm-chart-spring-cloud-gw-with-svc/master/images/gw-demo.PNG)
 
-特别声明
-- 由于spring cloud微服务架构依赖注册中心，因此本chart依赖[spring-cloud-eureka](https://) 源，已在Chart.yaml文件中声明：
-```yaml
-dependencies:
-  - name: spring-cloud-eureka
-    version: 0.1.0
-    repository: https://apphub.aliyuncs.com/
-```
+## 使用helm v3 dependency 和 Apphub 管理依赖
 - 添加apphub到本地helm repo
 
 ```shell
 helm repo add apphub https://apphub.aliyuncs.com/
 ```
 
+- 由于spring cloud微服务架构依赖注册中心，因此本chart依赖[spring-cloud-eureka](https://github.com/cloudnativeapp/charts/tree/master/submitted/spring-cloud-eureka) 源，已在Chart.yaml文件中声明：
+```yaml
+dependencies:
+  - name: spring-cloud-eureka
+    version: 0.1.0
+    repository: https://apphub.aliyuncs.com/
+```
+
+
 ## 安装使用
 
 ### 本地安装
 ```shell
+> helm repo add apphub https://apphub.aliyuncs.com/
 > helm dependency list
 NAME                    VERSION REPOSITORY                      STATUS
 spring-cloud-eureka     0.1.0   https://apphub.aliyuncs.com/    missing
@@ -60,7 +63,7 @@ user-service-67567fd8b-bfcgg   1/1     Running   0          43m
 NAME     READY   AGE
 eureka   3/3     20s
 # 查看所有service
-> kubect get svc
+> kubectl get svc
 NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)           AGE
 eureka       ClusterIP   None            <none>        28888/TCP         44m
 gateway      NodePort    10.106.21.126   <none>        28899:31000/TCP   44m
