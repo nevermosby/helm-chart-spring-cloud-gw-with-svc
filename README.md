@@ -13,6 +13,7 @@ You can use this helm chart to deploy the whole services of [spring cloud oss](h
 - [ ] Sleuth service for distributed tracing
 
 Now the helm chart can provide the gateway service and a [user service](https://github.com/nevermosby/springcloudoss-user-service) as a demo service to validate the gateway function. You can hit the url below to view the result:
+
 ![gw-demo](https://raw.githubusercontent.com/nevermosby/helm-chart-spring-cloud-gw-with-svc/master/images/gw-demo.PNG)
 
 ## Features
@@ -39,9 +40,7 @@ dependencies:
     repository: https://apphub.aliyuncs.com/
 ```
 
-
 ## Installation
-
 
 ### `helm add` & `helm install`
 ```shell
@@ -67,7 +66,7 @@ NAMESPACE: default
 STATUS: deployed
 ```
 
-### View the deployed kubernetes workload
+### View the deployed `kubernetes workload`
 ```shell
 # check the pods
 > kubectl get pod
@@ -88,7 +87,7 @@ eureka       ClusterIP   None            <none>        28888/TCP         44m
 gateway      NodePort    10.106.21.126   <none>        28899:31000/TCP   44m
 ```
 
-### Hit the demo url
+### Hit the `demo url`
 ```shell
 
 # if you use `minikube` like me, you should get the ip of `minikube` as below:
