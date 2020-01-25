@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: apollo-{{ .Release.Namespace }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+  name: apollo-config-center
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.data.springcloudoss.apollo.resource.replicas }}
+  selector:
+    matchLabels:
+      app: apollo-{{ .Release.Namespace }}
+      chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+      release: "{{ .Release.Name }}"
+  template:
+    metadata:
+      labels:
+        app: apollo-{{ .Release.Namespace }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+    spec:
+      containers:
+      - name: apollo
+        image: "{{ .Values.global.registry }}/{{ .Values.data.springcloudoss.apollo.image.repo }}:{{ .Values.data.springcloudoss.apollo.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        # envFrom:
+        # - configMapRef:
+        #     name: eureka-addresses
+        resources:
+          limits:
+            cpu: {{ .Values.data.springcloudoss.apollo.resource.limits.cpu }}
+            memory: {{ .Values.data.springcloudoss.apollo.resource.limits.memory }}
+          requests:
+            cpu: {{ .Values.data.springcloudoss.apollo.resource.requests.cpu }}
+            memory: {{ .Values.data.springcloudoss.apollo.resource.requests.memory }}

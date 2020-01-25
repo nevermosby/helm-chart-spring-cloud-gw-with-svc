@@ -7,7 +7,7 @@ You can use this helm chart to deploy the whole services of [spring cloud oss](h
 - [x] Zuul service as api gateway
 - [x] Eureka service as registry
 - [x] User service as bussiness service for demo
-- [ ] Config service as config center
+- [ ] Apollo service as config center
 - [ ] Auth service as security center
 - [ ] Hystrix service as circuit breaker
 - [ ] Sleuth service for distributed tracing

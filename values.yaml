@@ -18,6 +18,22 @@ data:
         requests:
           cpu: 100m
           memory: 200Mi
+    apollo:
+      application:
+        name: apollo-config-center
+        port: 8080
+        javaOptions:
+      image:
+        repo: springcloudoss/apollo
+        tag: "1.0"
+      resource:
+        replicas: 1
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 200Mi
     usersvc:
       application:
         name: user-service
