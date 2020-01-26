@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: {{ .Release.Namespace }}
+  name: auth-server
+  labels:
+    app: auth-{{ .Release.Namespace }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+spec:
+  type: NodePort
+  selector:
+    app: auth-{{ .Release.Namespace }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+  ports:
+  - name: auth
+    port: 28897
+    protocol: TCP
+  

@@ -4,11 +4,11 @@
 
 You can use this helm chart to deploy the whole services of [spring cloud oss](https://spring.io/projects/spring-cloud-netflix). It is planned to have the listed services below:
 
-- [x] Zuul service as api gateway
+- [x] Zuul service as api gateway, will move to use [Spring Cloud Gateway](https://spring.io/projects/spring-cloud-gateway) instead
 - [x] Eureka service as registry
 - [x] User service as bussiness service for demo
-- [ ] Apollo service as config center
-- [ ] Auth service as security center
+- [x] Apollo service as config center
+- [ ] Spring Cloud Security service as auth center
 - [ ] Hystrix service as circuit breaker
 - [ ] Sleuth service for distributed tracing
 

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: auth-{{ .Release.Namespace }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+  name: auth-server
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.data.springcloudoss.auth.resource.replicas }}
+  selector:
+    matchLabels:
+      app: auth-{{ .Release.Namespace }}
+      chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+      release: "{{ .Release.Name }}"
+  template:
+    metadata:
+      labels:
+        app: auth-{{ .Release.Namespace }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+    spec:
+      containers:
+      - name: auth
+        image: "{{ .Values.global.registry }}/{{ .Values.data.springcloudoss.auth.image.repo }}:{{ .Values.data.springcloudoss.auth.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        # envFrom:
+        # - configMapRef:
+        #     name: eureka-addresses
+        resources:
+          limits:
+            cpu: {{ .Values.data.springcloudoss.auth.resource.limits.cpu }}
+            memory: {{ .Values.data.springcloudoss.auth.resource.limits.memory }}
+          requests:
+            cpu: {{ .Values.data.springcloudoss.auth.resource.requests.cpu }}
+            memory: {{ .Values.data.springcloudoss.auth.resource.requests.memory }}
