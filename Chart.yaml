@@ -10,6 +10,11 @@ keywords:
   - spring cloud
   - gateway
   - zuul
+  - apollo
+  - auth
+  - security
+  - hystrix
+  - sleuth
   - deployment
 sources:
   - https://github.com/nevermosby/springcloudoss-gateway
