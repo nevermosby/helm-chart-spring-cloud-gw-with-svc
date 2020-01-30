@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hystrix-{{ .Release.Namespace }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+  name: hystrix-server
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.data.springcloudoss.hystrix.resource.replicas }}
+  selector:
+    matchLabels:
+      app: hystrix-{{ .Release.Namespace }}
+      chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+      release: "{{ .Release.Name }}"
+  template:
+    metadata:
+      labels:
+        app: hystrix-{{ .Release.Namespace }}
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+    spec:
+      containers:
+      - name: hystrix
+        image: "{{ .Values.global.registry }}/{{ .Values.data.springcloudoss.hystrix.image.repo }}:{{ .Values.data.springcloudoss.hystrix.image.tag }}"
+        imagePullPolicy: IfNotPresent
+        # envFrom:
+        # - configMapRef:
+        #     name: eureka-addresses
+        resources:
+          limits:
+            cpu: {{ .Values.data.springcloudoss.hystrix.resource.limits.cpu }}
+            memory: {{ .Values.data.springcloudoss.hystrix.resource.limits.memory }}
+          requests:
+            cpu: {{ .Values.data.springcloudoss.hystrix.resource.requests.cpu }}
+            memory: {{ .Values.data.springcloudoss.hystrix.resource.requests.memory }}

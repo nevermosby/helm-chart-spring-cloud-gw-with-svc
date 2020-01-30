@@ -18,6 +18,22 @@ data:
         requests:
           cpu: 100m
           memory: 200Mi
+    hystrix:
+      application:
+        name: hystrix-server
+        port: 8080
+        javaOptions:
+      image:
+        repo: springcloudoss/hystrix-server
+        tag: "1.0"
+      resource:
+        replicas: 1
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 200Mi
     auth:
       application:
         name: auth-server
